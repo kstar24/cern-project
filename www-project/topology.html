@@ -1,96 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HyperText Design Issues: Topology</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-        }
-        nav li {
-            display: inline;
-            margin-right: 5px;
-        }
-        nav li::after {
-            content: "›";
-            margin-left: 5px;
-        }
-        nav li:last-child::after {
-            content: "";
-        }
-        details {
-            margin-bottom: 15px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-        }
-        summary {
-            font-weight: bold;
-            cursor: pointer;
-        }
-        a {
-            color: blue;
-            text-decoration: underline;
-        }
-    </style>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Topology — WWW Project</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.red.min.css"/>
+    <link rel="stylesheet" href="../../assets/student-cernsite.css"/>
 </head>
 <body>
 
-<!-- Breadcrumb Navigation -->
-<nav aria-label="breadcrumb">
-    <ul>
-        <li><a href="../../index.html">Home</a></li>
-        <li><a href="../index.html">WWW Project</a></li>
-        <li><a href="index.html">Design Issues</a></li>
-        <li>Topology</li>
-    </ul>
-</nav>
-
-<main>
+<header>
     <h1>Topology</h1>
-    <p>Here are a few questions about the underlying connectivity of a hypertext web.</p>
+</header>
+<hr class="title-rule"/>
 
-    <!-- Collapsible Sections -->
-    <details>
-        <summary>Two- or Multi-ended Links</summary>
-        <p>The term "link" normally indicates two ends. Variations include multiple sources/destinations, or constructs relating more than two anchors. This maps onto logic systems and predicate calculus (see "Aquanet" system from Xerox PARC - HT91). For simplicity, we focus on conventional two-ended links.</p>
-    </details>
+<main id="main-content">
 
-    <details>
-        <summary>Monodirectional or Bidirectional Links</summary>
-        <p>Bidirectional links exist in both directions. Pros: users may see the reverse relationship (e.g., if A includes B, B is part of A). Cons: may constrain authors. Examples: KMS & HyperCard have one-way links; Enquire has two-way links. Useful for protected databases and managing dangling links. See <a href="building-back-links.html">Building Back-links</a>.</p>
-        <p>Placeholders: <a href="#">Private overlaid web</a>, <a href="#">Generic Links</a></p>
-    </details>
+<p>Here are a few questions about the underlying connectivity of a hypertext web.</p>
 
-    <details>
-        <summary>Anchors with Multiple Links</summary>
-        <p>One anchor may lead to multiple links, or a link may have multiple anchors. Many-to-one mapping is simpler. JFG suggests showing a small menu for ambiguous links. Example system: Microcosm.</p>
-    </details>
+<details>
+    <summary>Are links two- or multi-ended?</summary>
+    <p>The term "link" normally indicates with two ends. Variations of this are links with multiple sources and/or multiple destinations, and constructs which relate more than two anchors. The latter map onto logic description systems, predicate calculus, etc. See the "Aquanet" system from Xerox PARC - paper at HT91. This is a natural step from hypertext whose links are typed with semantic content. For example, the relation "Document A is a basis for document B given argument C". From now on however, let us restrict ourselves to links in the conventional sense, that is, with two ends.</p>
+</details>
 
-    <details>
-        <summary>Typed Links</summary>
-        <p>Typed links carry semantic information, helping the system manage data. Default type exists if untyped. See also <a href="#">list of some types</a>. JFG and TBL debate whether links can have multiple types. Typed links help with <a href="navigation-overview.html">graphical overviews</a> and automatic tracing.</p>
-    </details>
+<details>
+    <summary>Should the links be monodirectional or bidirectional?</summary>
+    <p>If they are bidirectional, a link always exists in the reverse direction. A disadvantage is that it might constrain the author of a hypertext. An advantage is that often, when a link is made between two nodes, it is made in one direction in the mind of its author, but another reader may be more interested in the reverse link. Bidirectional linking allows the system to deduce the inverse relationship, adding information for free.</p>
+    <p>KMS and HyperCard have one-way links; Enquire has two-way links. Automatic reverse links are useful for protected databases. See also: <a href="#">Private overlaid web</a>, <a href="#">Generic Links</a>.</p>
+    <p>A compromise is one-way links in the data model, with reverse links added automatically where allowed. See <a href="building-back-links.html">Building Back-links</a>.</p>
+</details>
 
-    <details>
-        <summary>Ancillary Information on Links</summary>
-        <p>Links may include date, version, authorship, or comments. Best practice: store information in source/intermediate nodes instead of overloading the link itself. Links can be annotatable but avoid complicating the interface.</p>
-    </details>
+<details>
+    <summary>Should anchors have more than one link?</summary>
+    <p>There is a design issue whether one anchor may lead to many links, and/or one link have many anchors. Many anchors leading to the same reference is reasonable. If one source anchor leads to multiple destinations, ambiguity can occur; menus could resolve this, but it complicates things. Many-to-one mapping is preferred.</p>
+    <p><a href="../../about/people/people.html#groff">JFG</a> disagrees and prefers a small menu if ambiguous. Microcosm implements this.</p>
+</details>
 
-    <details>
-        <summary>Preview Information</summary>
-        <p>Preview information allows readers to see link content before following it. Better approach: caching target node titles or descriptive material. Fast graphical overviews can replace previews.</p>
-    </details>
+<details>
+    <summary>Should links be typed?</summary>
+    <p>A typed link carries semantic information for data management. A default "untyped" type normally exists. See also <a href="#">a list of some types</a>. JFG suggests multiple types shouldn’t be represented in one link; TBL agrees. Link typing helps with graphical overviews and automatic tracing.</p>
+</details>
 
-    <p>References: <a href="../../about/people/people.html#groff">JFG</a> | <a href="https://en.wikipedia.org/wiki/Tim_Berners-Lee" target="_blank">TBL</a></p>
+<details>
+    <summary>Should links contain ancillary information?</summary>
+    <p>Links may include dates, versioning, authorship, or comments. This can complicate the data model, possibly making links into nodes themselves. Information could also be stored in source or intermediate nodes. Annotatable links may be considered but are not recommended.</p>
+</details>
+
+<details>
+    <summary>Should a link contain Preview information?</summary>
+    <p>Preview information helps readers decide whether to follow a link. This can be cached or included in the node itself, but it’s not essential. Fast graphic overviews can remove the need for preview functionality.</p>
+</details>
+
 </main>
+
+<footer>
+    <small>NVCC &middot; ITE170 &middot; Spring 2026</small>
+</footer>
+
 </body>
 </html>
